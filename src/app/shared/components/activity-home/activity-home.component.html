@@ -1,0 +1,51 @@
+<!-- <button (click)="dateChange()">date</button> -->
+
+
+<div class="container cardA" >
+  <div class="mainActivity" *ngFor="let data of activityDetials.data.sessions">
+    <!-- First Column -->
+    <div class="mainActivityCard" *ngFor="let data1 of data.sessions">
+      <div class="mainActivityImageContent">
+        
+        <div class="cardImage">
+                <div *ngIf="data1.sessionImage.original" class="img-wrap">
+                    <img src="{{ data1.sessionImage.original }}" alt="" />
+                </div>
+                <div *ngIf="!data1.sessionImage.original" class="img-wrap">
+                    <img src="../../../../assets/images/icon.jpg" alt="">
+                </div>
+        </div>
+        <div>
+            <div>
+                <h4>{{data1.name}}</h4>
+                <div class="icon-group"><p><i class="fa fa-child" aria-hidden="true"></i> Age: {{data1.ageRange.from }}-{{data1.ageRange.to}} yrs</p></div>
+                <div class="icon-group"><p><i class="fa fa-map-marker" aria-hidden="true"></i> {{data.name}}</p></div>
+    
+            </div>
+            <div>
+                <button mat-button (click)="openDialog(data1._id)">More Info</button>
+            </div>
+        </div>
+    
+
+      </div>
+      <!-- Second Column -->
+      <div class="cardA-02">
+        <app-week-days></app-week-days>
+      <div>
+        <div class="icon-group"><p><i class="fa fa-calendar" aria-hidden="true"></i> {{data1.dateTimestamp.from.toString()  | date:'MMM dd'}}  - {{data1.dateTimestamp.to.toString()  | date:'MMMM dd, y'}}</p></div>
+      </div>
+
+      </div>
+      <!-- third Column -->
+      <div class="cardA-03">
+        <p>${{data1.frequencyPrice}}/Week</p>
+        <button (click)="openDialogBox()" >Book Now</button>
+        <div *ngIf="data1.availableSpots">
+            <small>{{data1.availableSpots}} Available Seats</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,40 @@
+._activity_detail{
+    display: flex;
+    flex-direction:row;
+    .divider{
+        margin-left:15px !important;
+    }
+
+    .details{
+        margin-left:16px;
+        .address{
+            margin-bottom:0;
+        }
+        .rating{
+            mat-icon{
+                color: #f68d23 !important;
+                font-size: 20px;
+                margin-right:2px;
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+@media screen and (min-width: 100px) and (max-width: 767px) {
+.details h4 {
+    font-size: 20px;
+}
+.details .flex-row {
+    font-size: 14px;
+}
+}

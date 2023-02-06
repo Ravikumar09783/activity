@@ -1,0 +1,7 @@
+<h3 class="dilogue_title">TERMS & CONDITIONS</h3>
+<div *ngIf="termsAndConditions.length" class="terms_conditions row">
+    <div *ngFor="let term of termsAndConditions" class="col-md-12 single_term term_{{term.termId._id}}">
+        <i class="fa fa-check"></i>
+        <p>{{term.termId.text}}</p>
+    </div>
+</div>

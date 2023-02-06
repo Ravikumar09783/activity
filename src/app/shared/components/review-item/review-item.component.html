@@ -1,0 +1,16 @@
+<div class="review-item">
+    <div class="flex-row">
+        <app-avatar *ngIf = 'reviewItem?.reviewBy' 
+         [avatar] = 'reviewItem?.reviewBy?.profilePicURL' [size] = "'50px'"></app-avatar>
+         <h6 class = 'title'>{{reviewItem?.reviewBy?.name}}</h6>
+
+    </div>
+    <app-ratings></app-ratings>
+    <div class="flex-row justify-space">
+        <p class = 'small'>{{reviewItem?.description}}</p>
+        <p class = 'small'>{{reviewItem?.createdAt}}</p>
+    </div>
+    
+    <mat-divider></mat-divider>
+
+</div>

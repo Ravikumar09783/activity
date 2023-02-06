@@ -1,0 +1,98 @@
+<div class="activityinfo">
+  <div class="test-heading">
+    {{ activityInfo && activityInfo.name }}
+  </div>
+  <div class="activityDetails ">
+    <div class="activityDetailsLeft">
+      <div class="cardImage">
+        <div
+          *ngIf="activityInfo && activityInfo.sessionImage.original"
+          class="img-wrap"
+        >
+          <img src="{{ activityInfo.sessionImage.original }}" alt="" />
+        </div>
+        <div
+          *ngIf="!(activityInfo && activityInfo.sessionImage.original)"
+          class="img-wrap"
+        >
+          <img src="../../../../assets/images/icon.jpg" alt="" />
+        </div>
+      
+
+      <div class="ageLocation">
+        <div class="age">
+            <p><i class="fa fa-child" aria-hidden="true"></i> {{activityInfo && activityInfo.activityId.ageRange.from}} - {{activityInfo && activityInfo.activityId.ageRange.to}} yrs</p>
+        </div>
+        <div class="age location">
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{activityInfo && activityInfo.siteLocationId.name}}</p>
+        </div>
+        
+
+      </div>
+      <div class="age dateRange">
+        <div class="icon-group"><p><i class="fa fa-calendar" aria-hidden="true"></i> {{activityInfo && activityInfo.localDateTimestamp.from  | date:'MMM dd'}}  - {{activityInfo && activityInfo.localDateTimestamp.to  | date:'MMMM dd, y'}}</p></div>
+      </div>
+      <div class="age">
+        <app-week-days></app-week-days>
+      </div>
+
+      <div class="age ratings">
+        <h5>Ratings</h5>
+        ⭐⭐⭐⭐⭐(5 Star based on 47 reviews)
+      </div>
+
+      <div class="age bookings">
+        <h5>Bookings Available</h5>
+        <p> $0</p>
+      </div>
+    </div>
+
+
+      <div class="booking-btn">
+        <button>Book Now</button>
+      </div>
+
+    </div>
+    <div class="activityDetailsRight">
+        <div class="aboutSession">
+            <h5>About This Session</h5>
+            <p>{{activityInfo && activityInfo.name}}</p>
+            <button>
+                Share
+            </button>
+        </div>
+
+        <div class="bringingNeeds">
+            <h5>Bringing Needs</h5>
+            <ul *ngFor="let bringingNeeds of activityInfo.activityId?.bringingNeedsArr">
+                <li >
+                    {{bringingNeeds.title}}
+                </li>
+            </ul>
+        </div>
+        <div class="pickDrop">
+            <h5>Pick-up & Drop Off Location</h5>
+            <div class="location">
+                <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{activityInfo && activityInfo.siteLocationId.name}}</p>
+            </div>
+            
+        </div>
+        <div class="cancellationPolicy">
+          <h5>Cancelation Policy</h5>
+            <p>{{activityInfo &&  activityInfo.cancellationPolicy.description}}</p>
+            <p>{{activityInfo &&  activityInfo.cancellationPolicy.note}}</p>
+
+            <div class="cancelation-terms"  *ngFor="let cancellationData of activityInfo!.cancellationPolicy.terms">
+                
+                <p><span class="check-icon"><i class="fa fa-check" aria-hidden="true"></i></span> {{cancellationData}}</p>
+            </div>
+        </div>
+
+        <div class="reviews">
+            <h5>Reviews</h5>
+            <p>Great Service</p>
+        </div>
+
+    </div>
+  </div>
+</div>

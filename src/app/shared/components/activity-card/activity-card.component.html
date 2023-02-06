@@ -1,0 +1,33 @@
+<mat-card [ngStyle] = "{'background-image' : (sessionImage && sessionImage.original) ?  'url(' + sessionImage.original + ')' : 'linear-gradient( to right ,#303f9f, #1d78b0)'}">
+    <div class = 'flex-row'>
+        <app-days [selectedDays] = 'item.daysOfWeek'></app-days>
+    </div>
+    <div class="inner-content">
+        <div class="left-panel">
+            <h6 class = 'title'>{{item.name}}</h6>
+            <p class = 'text-muted small session-date' *ngIf = 'item.dateTimestamp'>
+                {{sessionDates.from}} - {{sessionDates.to}}
+              </p>
+              <p class = 'small session-date'>   
+                 {{sessionDates.startTime}}  -  {{sessionDates.endTime}}
+             </p>
+             
+            <!-- <app-ratings></app-ratings> -->
+
+  </div>
+  <div class="icon-wrapper" matTooltip="Available Seats">
+    <mat-icon>event_seat</mat-icon>
+    <span>{{item.availableSpots}} <small>seats </small></span>
+  </div>
+  <div class="right-panel">
+      
+
+      <button class = 'transparent-btn' (click)="purchaseSession(item._id)" mat-raised-button>Purchase</button>
+      <button class = 'transparent-btn' (click)="sessionDetail(item._id)" mat-raised-button>View More</button>
+  </div>
+    </div>
+   
+    <div class="layer">
+    </div>
+    
+</mat-card>

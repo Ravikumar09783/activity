@@ -1,0 +1,44 @@
+stages:
+- build
+- deploy
+
+before_script:
+# needed for phantomjs
+- export QT_QPA_PLATFORM=offscreen
+
+
+run test cases and build testing:
+  stage: build
+  image: node:12.14.0
+  script:
+  - npm install -g @angular/cli
+  - npm install
+  - npm rebuild node-sass --force
+  - ng build --configuration=development
+  only:
+  - develop
+  cache:
+    untracked: true
+    paths:
+    - dist/
+
+deploy to development:
+  variables:
+    S3_BUCKET_NAME: "dev-webpage.activityhub.com"
+  environment:
+    name: development
+  stage: deploy
+  image: python:latest
+  script:
+  - pip install awscli
+  - aws configure set preview.cloudfront true
+  - aws s3 sync ./dist s3://$S3_BUCKET_NAME/ --exclude "*.map" --delete
+  only:
+  - develop
+  cache:
+    untracked: true
+    paths:
+    - dist/
+
+
+

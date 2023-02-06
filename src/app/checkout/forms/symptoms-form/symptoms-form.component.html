@@ -1,0 +1,72 @@
+<h2 mat-dialog-title>SYMPTOMS</h2>
+<form [formGroup]="Symptoms">
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-checkbox (change)="selectNone($event)" matInput formControlName="none" class="checkbox">None</mat-checkbox>
+            </div>
+
+            <div class="col-md-12 formheading">
+                <h3>Mild Symptoms</h3>
+                <mat-divider></mat-divider>
+            </div> 
+            <div class="col-md-12" formGroupName="extremelyReactive">
+                <div class="row">
+                    <div class="col-md-3">
+                        <mat-checkbox [disabled]="isNoneSected" formControlName="lung" matInput class="checkbox">Lung</mat-checkbox>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-checkbox [disabled]="isNoneSected" formControlName="mouth" matInput class="checkbox">Mouth</mat-checkbox>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-checkbox [disabled]="isNoneSected" formControlName="heart" matInput class="checkbox">Heart</mat-checkbox>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-checkbox [disabled]="isNoneSected" formControlName="skin" matInput class="checkbox">Skin</mat-checkbox>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-checkbox [disabled]="isNoneSected" formControlName="throat" matInput class="checkbox">Throat</mat-checkbox>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-checkbox [disabled]="isNoneSected" formControlName="digestive" matInput class="checkbox">Degestive </mat-checkbox>
+                    </div>
+                    <div class="col-md-12">
+                        <mat-checkbox [disabled]="isNoneSected" (change)="mildOther($event)" matInput class="checkbox">Other </mat-checkbox>
+                        <mat-form-field *ngIf="showMildOther" class="full-width">
+                            <input matInput placeholder="Additional Specifics"  formControlName="other">
+                        </mat-form-field>
+                    </div>
+                </div>    
+            </div>
+
+            <div class="col-md-12 formheading">
+                <h3>Extremely Reactive</h3>
+                <mat-divider></mat-divider>
+            </div>  
+            <div class="col-md-12" formGroupName="mildSymptoms">
+                <div class="row">
+                    <div class="col-md-3"> 
+                        <mat-checkbox [disabled]="isNoneSected" formControlName="mildNausea" matInput class="checkbox">Mild Nausea</mat-checkbox>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-checkbox [disabled]="isNoneSected" formControlName="mouth" matInput class="checkbox">Mouth</mat-checkbox>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-checkbox [disabled]="isNoneSected" formControlName="skin" matInput class="checkbox">Skin</mat-checkbox>
+                    </div>
+                    <div class="col-md-12">
+                        <mat-checkbox [disabled]="isNoneSected" (change)="extreactiveOther($event)" matInput class="checkbox">Other </mat-checkbox>
+                        <mat-form-field *ngIf="showExtreactiveOther" class="full-width">
+                            <input matInput placeholder="Additional Specifics"  formControlName="other">
+                        </mat-form-field>
+                    </div>
+                </div>    
+                
+            </div>    
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button color="basic" mat-raised-button mat-dialog-close>Cancel</button>
+      <button mat-raised-button color="primary" (click)='save()'>Save</button>
+    </mat-dialog-actions>
+</form>

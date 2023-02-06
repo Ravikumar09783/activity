@@ -1,0 +1,407 @@
+<app-home-header></app-home-header>
+<div class="_nosession_cart" *ngIf="cartSize == 0">
+   Nothing in your bucket. Please add some activities.
+</div>
+<div class="wrapper">
+   <mat-horizontal-stepper *ngIf="cartSize > 0" class="checkout_stepper" labelPosition="bottom" linear #stepper>
+      <mat-step [stepControl]="parentForm" [editable]="isEditable">
+      <form [formGroup]="parentForm">
+         <ng-template matStepLabel>Contact Information</ng-template>
+         <div class="container-fluid">
+		 
+            <div class="row" *ngIf='providerLocDetails && providerLocDetails.location'>
+               <div class="_activity_detail col-md-12">
+					<div class="details">
+						<h4>{{providerLocDetails.location.providerId.name}}
+							<span class="subheading">{{providerLocDetails.location.street}}{{providerLocDetails.location.state}}, {{providerLocDetails.location.city}}</span>
+							<span class="subheading">&nbsp;&nbsp;|&nbsp;&nbsp;{{providerLocDetails.location.providerId.phone}}</span>
+						</h4>
+					</div>
+				</div>
+            </div>
+			
+			<div class="row">		
+				
+				<div class="col-md-12">
+					<div class="Step_form">
+						 <div class="row">
+							<div class="col-md-4">
+							   <mat-form-field class="full-width">
+								  <input matInput placeholder="Full Name" required formControlName="name">
+								  <mat-error *ngIf="parentForm.controls['name'].hasError('required')">
+									 Name is <strong>required</strong>
+								  </mat-error>
+							   </mat-form-field>
+							</div>
+							<div class="col-md-4">
+							   <mat-form-field class="full-width">
+								  <input matInput placeholder="Email" formControlName="guestEmail" required>
+								  <mat-error *ngIf="parentForm.controls['guestEmail'].hasError('required')">
+									 Email is <strong>required</strong>
+								  </mat-error>
+								  <mat-error *ngIf="parentForm.controls['guestEmail'].hasError('email')">
+									 Enter valid <strong>email address</strong>
+								  </mat-error>
+							   </mat-form-field>
+							</div>
+							<div class="col-md-4">
+							   <mat-form-field class="full-width">
+								  <mat-select placeholder="gender" formControlName="gender">
+									 <mat-option *ngFor="let gender of genders" [value]="gender.value">
+									 {{ gender.label }}
+									 </mat-option>
+								  </mat-select>
+								  <mat-error *ngIf="parentForm.controls['gender'].hasError('required')">
+									 gender is <strong>required</strong>
+								  </mat-error>
+							   </mat-form-field>
+							</div>
+						 </div>
+						 <div class="row">
+							<div class="col-md-4">
+							   <!--<mat-form-field class="full-width">
+								  <input type="tel" matInput placeholder="Phone Number" formControlName="phone" required>
+								  <mat-error *ngIf="parentForm.controls['phone'].hasError('required')">
+									  Phone name is <strong>required</strong>
+								  </mat-error>
+								  </mat-form-field> -->
+							   <ngx-intl-tel-input
+							   [inputId]="'parent_phone'"
+							   [cssClass]="'phone_input mat-input-element'" 
+							   [preferredCountries]="preferredCountries"
+							   [enableAutoCountrySelect]="false" 
+							   [enablePlaceholder]="true" 
+							   [searchCountryFlag]="true"
+							   [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+							   [selectFirstCountry]="false" 
+							   [selectedCountryISO]="CountryISO.UnitedStates"
+							   [maxLength]="10" 
+							   [tooltipField]="TooltipLabel.Name" 
+							   [phoneValidation]="false" 
+							   [separateDialCode]="separateDialCode"
+							    name="phone" formControlName="phone">
+							   </ngx-intl-tel-input>
+							   <mat-error class='mat-error-custom' *ngIf="(parentForm.controls['phone'].touched || submitted) && parentForm.controls['phone'].hasError('required')">
+								  phone is <strong>required</strong>
+								  </mat-error>
+							   
+							   
+							</div>
+							<div class="col-md-4">
+							   <mat-form-field class="full-width">
+								  <mat-select placeholder="Marital Status" formControlName="maritalStatus">
+									 <mat-option *ngFor="let maritalStatus of maritalStatuses" [value]="maritalStatus.value">
+									 {{ maritalStatus.label }}
+									 </mat-option>
+								  </mat-select>
+							   </mat-form-field>
+							</div>
+							<div class="col-md-4">
+							</div>
+						 </div>
+					 <div [className]="'button_wrap'">
+						<button mat-raised-button color="primary" (click)="saveContactDetail()" matStepperNext>Next</button>
+					 </div>
+				</div>
+				</div>
+				
+				<div class="col-md-5" style="display:none;">
+					<div class="product_row">
+					   <span class="product-title"> Product Name</span>
+					   <span class="product-title"> Seats</span>
+					   <span class="product-title"> Amount</span>
+					</div>
+					<div class="product_cnt">
+					<div *ngFor="let item of cartItems | keyvalue" class="singlecartitems">
+					   <div class="product_Inner">
+						  <span class="_head_cartitem_name">{{item.value.session_detail.name }}</span>
+						  <!--span class="_head_cartitem_name">{{item.value.session_detail.description }}</span-->
+						  <span class="_cartitem_seat_count">{{item.value.participants.length}} seats </span>
+						  <span class="">${{item.value.price}}</span>
+						  <!--span class="_head_cartitem_name">{{item.value.session_detail | json}}</span-->
+					   </div>
+					</div>
+				</div>
+				</div>
+			
+			</div>
+			
+			
+			
+         </div>
+		 
+      </form>
+	  
+      </mat-step>
+      <mat-step [editable]="isEditable" >
+         <div [ngClass]="{'ajax-processing' : isProcessing}">
+            <ng-template matStepLabel>Participant Forms</ng-template>
+            <div *ngFor="let participentdata of participantForms | keyvalue" class="row participant_forms_wrap" >
+               <div class="col-md-12">
+                  <h3>{{participentdata.value.participent.firstName}} {{participentdata.value.participent.lastName}}</h3>
+               </div>
+               <mat-card [ngClass]="(validForms[participentdata.value.participent._id] && validForms[participentdata.value.participent._id].dietRestricts) ? 'form_success':'form_error'" (click)="openDietDialog(participentdata.value.participent._id)" *ngIf="participentdata.value.forms.dietRestricts" class="col-md-3 Participant_form_card ">
+               <i class="fa fa-check-square FaCheckIcon" aria-hidden="true"></i>
+               <i class="fa fa-times FaCloseIcon" aria-hidden="true"></i>
+               <img src="https://tc-artworks.com/wp-content/plugins/activityhub/assets/img/icon/icon_kidsDietRestricts.png">
+               <mat-card-content>
+                  Diet Restrictions
+               </mat-card-content>
+               </mat-card>
+               <mat-card [ngClass]="(validForms[participentdata.value.participent._id] && validForms[participentdata.value.participent._id].treatments) ? 'form_success':'form_error'" (click)="openTreatmentDialog(participentdata.value.participent._id)" *ngIf="participentdata.value.forms.treatments" class="col-md-3 Participant_form_card">
+               <i class="fa fa-check-square FaCheckIcon" aria-hidden="true"></i>
+               <i class="fa fa-times FaCloseIcon" aria-hidden="true"></i>
+               <img src="https://tc-artworks.com/wp-content/plugins/activityhub/assets/img/icon/icon_kidsTreatments.png">
+               <mat-card-content>
+                  Treatments
+               </mat-card-content>
+               </mat-card> 
+               <mat-card [ngClass]="(validForms[participentdata.value.participent._id] && validForms[participentdata.value.participent._id].symptoms) ? 'form_success':'form_error'" (click)="openSymptomDialog(participentdata.value.participent._id)" *ngIf="participentdata.value.forms.symptoms" class="col-md-3 Participant_form_card">
+               <i class="fa fa-check-square FaCheckIcon" aria-hidden="true"></i>
+               <i class="fa fa-times FaCloseIcon" aria-hidden="true"></i>
+               <img src="https://tc-artworks.com/wp-content/plugins/activityhub/assets/img/icon/icon_kidsSymptoms.png">
+               <mat-card-content>
+                  Symptoms
+               </mat-card-content>
+               </mat-card>
+               <mat-card [ngClass]="(validForms[participentdata.value.participent._id] && validForms[participentdata.value.participent._id].foodAllergies) ? 'form_success':'form_error'" (click)="openFoodAllergyDialog(participentdata.value.participent._id)" *ngIf="participentdata.value.forms.foodAllergies" class="col-md-3 Participant_form_card">
+               <i class="fa fa-check-square FaCheckIcon" aria-hidden="true"></i>
+               <i class="fa fa-times FaCloseIcon" aria-hidden="true"></i>
+               <img src="https://tc-artworks.com/wp-content/plugins/activityhub/assets/img/icon/icon_kidsFoodAllergies.png">
+               <mat-card-content>
+                  Food Allergies
+               </mat-card-content>
+               </mat-card>
+               <mat-card [ngClass]="(validForms[participentdata.value.participent._id] && validForms[participentdata.value.participent._id].environmentAllergies) ? 'form_success':'form_error'" (click)="openEnvAllergyDialog(participentdata.value.participent._id)" *ngIf="participentdata.value.forms.environmentAllergies" class="col-md-3 Participant_form_card">
+               <i class="fa fa-check-square FaCheckIcon" aria-hidden="true"></i>
+               <i class="fa fa-times FaCloseIcon" aria-hidden="true"></i>
+               <img src="https://tc-artworks.com/wp-content/plugins/activityhub/assets/img/icon/icon_kidsFoodAllergies.png">
+               <mat-card-content>
+                  Environment Allergies
+               </mat-card-content>
+               </mat-card>
+               <mat-card [ngClass]="(validForms[participentdata.value.participent._id] && validForms[participentdata.value.participent._id].medicationAllergies) ? 'form_success':'form_error'" (click)="openMedElergyDialog(participentdata.value.participent._id)" *ngIf="participentdata.value.forms.medicationAllergies" class="col-md-3 Participant_form_card">
+               <i class="fa fa-check-square FaCheckIcon" aria-hidden="true"></i>
+               <i class="fa fa-times FaCloseIcon" aria-hidden="true"></i>
+               <img src="https://tc-artworks.com/wp-content/plugins/activityhub/assets/img/icon/icon_kidsMedicationAllergies.png">
+               <mat-card-content>
+                  Medication Allergies
+               </mat-card-content>
+               </mat-card>
+               <mat-card [ngClass]="(validForms[participentdata.value.participent._id] && validForms[participentdata.value.participent._id].healthConcerns) ? 'form_success':'form_error'" (click)="openHealthDialog(participentdata.value.participent._id)" *ngIf="participentdata.value.forms.healthConcerns" class="col-md-3 Participant_form_card">
+               <i class="fa fa-check-square FaCheckIcon" aria-hidden="true"></i>
+               <i class="fa fa-times FaCloseIcon" aria-hidden="true"></i>
+               <img src="https://tc-artworks.com/wp-content/plugins/activityhub/assets/img/icon/icon_kidsHealthConcerns.png">
+               <mat-card-content>
+                  Health Concerns
+               </mat-card-content>
+               </mat-card>
+               <mat-card [ngClass]="(validForms[participentdata.value.participent._id] && validForms[participentdata.value.participent._id].dentalInsurance) ? 'form_success':'form_error'" (click)="openDentalInsuranceDialog(participentdata.value.participent._id)" *ngIf="participentdata.value.forms.dentalInsurances" class="col-md-3 Participant_form_card">
+               <i class="fa fa-check-square FaCheckIcon" aria-hidden="true"></i>
+               <i class="fa fa-times FaCloseIcon" aria-hidden="true"></i>
+               <img src="https://tc-artworks.com/wp-content/plugins/activityhub/assets/img/icon/icon_kidsDentalInsurances.png">
+               <mat-card-content>
+                  Dental Insurance
+               </mat-card-content>
+               </mat-card>
+               <mat-card [ngClass]="(validForms[participentdata.value.participent._id] && validForms[participentdata.value.participent._id].doctors) ? 'form_success':'form_error'" (click)="openKidDoctorDialog(participentdata.value.participent._id)" *ngIf="participentdata.value.forms.doctors" class="col-md-3 Participant_form_card">
+               <i class="fa fa-check-square FaCheckIcon" aria-hidden="true"></i>
+               <i class="fa fa-times FaCloseIcon" aria-hidden="true"></i>
+               <img src="https://tc-artworks.com/wp-content/plugins/activityhub/assets/img/icon/icon_kidsDoctors.png">
+               <mat-card-content>
+                  Doctor
+               </mat-card-content>
+               </mat-card>
+               <mat-card [ngClass]="(validForms[participentdata.value.participent._id] && validForms[participentdata.value.participent._id].medicalInsurance) ? 'form_success':'form_error'" (click)="openMedicalInsuranceDialog(participentdata.value.participent._id)" *ngIf="participentdata.value.forms.medicalInsurances" class="col-md-3 Participant_form_card">
+               <i class="fa fa-check-square FaCheckIcon" aria-hidden="true"></i>
+               <i class="fa fa-times FaCloseIcon" aria-hidden="true"></i>
+               <img src="https://tc-artworks.com/wp-content/plugins/activityhub/assets/img/icon/icon_kidsMedicalInsurances.png">
+               <mat-card-content>
+                  Medical Insurance
+               </mat-card-content>
+               </mat-card>
+            </div>
+            <div [className]="'button_wrap'">
+               <button color="basic" mat-raised-button matStepperPrevious>Back</button>
+               <button mat-raised-button color="primary" (click)="saveParticipantForms(stepper)">Next</button>
+            </div>
+         </div>
+      </mat-step>
+      <mat-step [stepControl]="paymentForm" [editable]="isEditable">
+      <form [formGroup]="paymentForm">
+         <ng-template matStepLabel>Purchase Details</ng-template>
+         <div *ngIf="cartDetail" class="cart_summary" >
+            <div class="km_cart_wrap">
+               <div *ngFor="let cartData of cartDetail.details" class="km_cart_item" >
+                  <div class="my__purchase-details row">
+                     <div class="km_cart_session_name col-md-3">
+                        {{cartItems[cartData.bookingKey].session_detail.name}}
+                     </div>
+                     <div class="km_cart_meta col-md-3">
+                        <span *ngIf="cartData.additionalChargeDetails">
+                        <span *ngFor="let additionalCharge of cartData.additionalChargeDetails" class='km_add_charges_item'>
+                        <span>{{additionalCharge.title}}:</span>
+                        <b> ${{additionalCharge.price}}</b>
+                        </span>
+                        </span>
+                        <span *ngIf="!cartData.additionalChargeDetails">N/A</span>
+                     </div>
+                     <div class="col-md-3">
+                        <span *ngIf="cartData.extendedCareSelected" class='km_ext_care_item'>
+                        <span>{{extendedCares[cartData.extendedCareSelected]}}:</span>
+                        <b>${{cartData.extendedCareDetails[cartData.extendedCareSelected].pricePerSession}}</b>
+                        </span>
+                        <span *ngIf="!cartData.extendedCareSelected">N/A</span>
+                     </div>
+                     <div class="col-md-3 row">
+                        <span class="col-md-12" *ngFor="let participant of cartItems[cartData.bookingKey].participants">
+                        {{participant.firstName}}
+                        </span>   
+                     </div>
+                  </div>
+                  <div class="km_cart_price_row row">
+                     <div class="km_sess_total_price">Session Price: ${{cartData.totalSessionPrice}}</div>
+                     <div class="km_sess_total_price">Additional Charges: ${{cartData.additionalChargePrice}}</div>
+                     <div class="km_sess_total_price">Extended Care charges: ${{cartData.extendedCarePrice}}</div>
+                     <div class="km_sess_sibling">Sibling Discount: ${{cartData.siblingDiscountAmount}}</div>
+                  </div>
+               </div>
+               <div class="km_total_price_wrap row">
+                  <div class="km_sess_total_price">Purchase Price: ${{cartDetail.totalAmount}}</div>
+                  <div class="km_sess_sibling">Total Sibling Discount: ${{cartDetail.siblingDiscount}}</div>
+                  <div class="km_sess_sibling">Total Campaign Discount: ${{cartDetail.campaignDiscount}}</div>
+                  <div class="km_sess_total_price">Credit Applied: ${{cartDetail.storeCreditPaid}}</div>
+                  <div class="km_sess_payable_price">Total Payable Price: ${{cartDetail.payableAmount}} </div>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6 cardElement">
+               <h3>Payment Detail</h3>
+               <div class="row">
+                  <div class="field">
+                     <div id="example2-card-number" #cardNumber class="input empty"></div>
+                     <label for="example2-card-number" data-tid="elements_examples.form.card_number_label">Card number</label>
+                     <div class="baseline"></div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="field col-md-6">
+                     <div id="example2-card-expiry" #cardExpiary class="input empty"></div>
+                     <label for="example2-card-expiry" data-tid="elements_examples.form.card_expiry_label">Expiration</label>
+                     <div class="baseline"></div>
+                  </div>
+                  <div class="field col-md-6">
+                     <div id="example2-card-cvc" #cardCVC class="input empty"></div>
+                     <label for="example2-card-cvc" data-tid="elements_examples.form.card_cvc_label">CVC</label>
+                     <div class="baseline"></div>
+                  </div>
+               </div>
+               <mat-error id="card-errors" role="alert" *ngIf="cardError">
+                  {{ cardError }}
+               </mat-error>
+            </div>
+            <div class="col-md-6">
+               <h3>Billing Detail</h3>
+               <div class="row">
+                  <mat-form-field class="full-width col-md-12">
+                     <input required matInput placeholder="Address Line 1" formControlName="line1">
+                     <mat-error *ngIf="paymentForm.controls['line1'].hasError('required')">
+                        Address is <strong>required</strong>
+                     </mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="full-width col-md-12">
+                     <input matInput placeholder="Address Line 2" formControlName="line2">
+                  </mat-form-field>
+                  <mat-form-field class="full-width  col-md-12">
+                     <mat-select required placeholder="State" formControlName="state">
+                        <mat-option *ngFor="let state of states | keyvalue" [value]="state.key">
+                        {{ state.value }}
+                        </mat-option>
+                     </mat-select>
+                     <mat-error *ngIf="paymentForm.controls['state'].hasError('required')">
+                        State is <strong>required</strong>
+                     </mat-error>
+                  </mat-form-field>
+                  <mat-form-field required class="full-width col-md-6">
+                     <input matInput placeholder="City" formControlName="city">
+                     <mat-error *ngIf="paymentForm.controls['city'].hasError('required')">
+                        City is <strong>required</strong>
+                     </mat-error>
+                  </mat-form-field>
+                  <mat-form-field required class="full-width col-md-6">
+                     <input matInput placeholder="Zip Code" formControlName="pin">
+                     <mat-error *ngIf="paymentForm.controls['pin'].hasError('required')">
+                        Zip Code is <strong>required</strong>
+                     </mat-error>
+                  </mat-form-field>
+               </div>
+            </div>
+         </div>
+         <div [className]="'button_wrap'">
+            <button color="basic" mat-raised-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" (click)="savePaymentDetail(stepper)">Next</button>
+         </div>
+      </form>
+      </mat-step>
+      <mat-step [stepControl]="termsForm"  [editable]="isEditable">
+      <ng-template matStepLabel>Confirmation</ng-template>
+      <div class="purchase_error" *ngIf="purchaseError" >{{purchaseError}}</div>
+      <div *ngIf="purchaseDone" class="km_thankyou_page" >
+         <svg width="102px" height="102px" viewBox="0 0 102 102">
+            <g id="Accout-Pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+               <g id="Proccess-S5" transform="translate(-669.000000, -533.000000)">
+                  <g id="Group" transform="translate(670.000000, 534.000000)">
+                     <path d="M43.3213435,62.7638709 L33.8955408,52.9421993 C32.7014864,51.6975873 32.7014864,49.680363 33.8955408,48.4362651 C35.0876242,47.1909676 37.0247187,47.1909676 38.2191016,48.4362651 L45.4831239,56.0043698 L63.7804057,36.933459 C64.975117,35.688847 66.9097479,35.688847 68.1044592,36.933459 C69.2985136,38.1789279 69.2985136,40.1952953 68.1044592,41.4400787 L47.6449043,62.7638709 C47.0477129,63.3854914 46.2655827,63.6969014 45.4831239,63.6969014 C44.7009937,63.6969014 43.9186992,63.3854914 43.3213435,62.7638709 Z" id="tickmark" fill="#BFD00C"></path>
+                     <circle id="Oval-3" stroke="#BFD00C" stroke-width="2" cx="50" cy="50" r="50"></circle>
+                     <circle id="Oval-3" stroke="#BFD00C" cx="50.5" cy="50.5" r="42.5"></circle>
+                  </g>
+               </g>
+            </g>
+         </svg>
+         <h2 class="km_thankyou_title">Congratulations</h2>
+         <div class="km_thankyou_message">Your signup request is processed successfully. Thank you!</div>
+         <a href="/" mat-raised-button color="primary">Return to Home</a>
+      </div>
+      <form *ngIf="!purchaseDone" [formGroup]="termsForm">
+      <div *ngIf="cartDetail" class="row">
+         <div class="col-md-12 km_checkout_conf_pricedetail" [ngClass]="{'ajax-processing' : isProcessing}">
+            <div class="km_tab col-md-6">
+               <ul class="pl-0 m-0">
+                  <li>
+                     <span class="km_title_">Bag Total</span>
+                     <span class="km_price_">${{cartDetail.totalAmount}}</span>
+                  </li>
+                  <li>
+                     <span class="km_title_">Sibling Discount</span>
+                     <span class="km_price_ km_skyblue">${{cartDetail.siblingDiscount}}</span>
+                  </li>
+                  <li>
+                     <span class="km_title_">Store Credit Applied</span>
+                     <span class="km_price_ km_skyblue">${{cartDetail.storeCreditPaid}}</span>
+                  </li>
+                  <li>
+                     <span class="km_title_">Total Payable</span>
+                     <span class="km_price_ km_orange">${{cartDetail.payableAmount}}</span>
+                  </li>
+               </ul>
+            </div>
+            <div class="activity_terms_conditions">
+               <mat-checkbox [disabled]="isNoneSected" formControlName="termsGroup" matInput class="checkbox">
+                  <span>I've read and accept the <a (click)="displayProviderTerms()" class="km_provider_terms_display">terms &amp; conditions</a></span>
+               </mat-checkbox>
+               <mat-error *ngIf="termsForm.controls['termsGroup'].hasError('required')">
+                  Please accept the terms.
+               </mat-error>
+            </div>
+         </div>
+      </div>
+      <div [className]="'button_wrap'">
+         <button color="basic" mat-raised-button matStepperPrevious>Back</button>
+         <!--<button mat-raised-button color="primary" mat-button (click)="stepper.reset()">Reset</button>-->
+         <button mat-raised-button color="primary" (click)="makePurchase(stepper)">Purchase</button>
+      </div>
+      </form>
+      </mat-step>
+   </mat-horizontal-stepper>
+</div>

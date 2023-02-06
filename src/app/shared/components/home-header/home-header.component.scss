@@ -1,0 +1,118 @@
+header{padding: 1rem 2rem;}
+.header_left {display: flex;align-items: center;}
+._no_items_cart {text-align: center;padding: 10px;font-size: 14px;font-weight: 600;}
+.header-search{margin-left: 15px;border-radius: 8px;border: solid 1px #ccc;padding-left: 10px;
+background-color: #e9ecef;width: 300px;height: 35px;
+::ng-deep .mat-form-field-underline {
+display: none;
+}
+
+::ng-deep .mat-form-field-infix {
+padding: none;border:none;color:currentColor;position: none;}
+}
+.pull-right {
+    text-align: right;
+}
+
+._cart_item_actions a {
+    margin-right: 10px;
+}
+.user_information button {outline: none;}
+button:focus {outline: none !important;}
+.header_right {display: flex;flex-direction: row;justify-content: flex-end;flex-wrap: wrap;}
+
+span._head_cartitem_name {font-size: 16px;font-weight: 500;text-transform: capitalize;
+    display: block;
+    padding-bottom: 10px;
+}
+._cartitem_seat_count {display: inline-block;width: 100%;}
+span._remove_cart_item {position: absolute;top: 0px;right: 5px;font-weight: bold;cursor: pointer;}
+a.checkout_link {margin: 10px 20px;justify-content: center;display: flex;}
+.cart_data {position:fixed; right: -350px; width: 350px;top:0px;max-height:100%;border: 1px solid #c2c2c2;background: #fff;z-index: 9;border-radius: 0px 0px 5px 5px;transition: 1s; height:100%}
+.singlecartitems {position: relative;border-bottom: 1px solid #c2c2c2; padding:30px 10px 15px;}
+.cart_data.cart-open, .cart_data.cart-open-cartSize {top: 0px; right: 0px;}
+.side-buttons{border-radius: 5px;border: solid 1px #ccc;padding: 4px 6px;}
+.cart-button{background-color:#245da5;color:#ffffff;}
+.sign-in-button{color:#245da5;}
+.search-icon{position: absolute;margin-left: 22px;margin-top: 10px;color: grey;}
+._cartitem_seat_count {display: inline-block;width: 100%;}
+.mat-icon{vertical-align: middle;}
+.cart_number{margin-left: 3px;font-size: 16px;}
+
+.DesktopSearch {display: block;}
+.MobileSearch {display: none;}
+.sticky {
+    position: fixed;
+    background: #fff;
+    z-index: 999;
+    width: 100%;
+}
+
+
+.atc_close_btn.cart_close {float: right;font-size:16px;font-weight: 600;cursor: pointer;position: absolute;right: 0;
+    background: #333;color: #fff;height: 30px;width: 30px;border-radius: 50%;text-align: center;line-height: 30px;padding: 0; z-index: 9999999;}
+
+.mobile_checkout_cantainer {height: 500px; overflow-y: scroll; overflow-x: hidden;}
+::-webkit-scrollbar { width: 0; background: transparent;}
+p.continue_shopping_cart {text-align: center;}
+.checkout_mobile_button {display: flex;justify-content: space-evenly;padding: 0 10px;font-size: 15px;align-items: center; flex-direction: column;}
+a._remove_cart_item {color: red;}
+p.continue_shopping_cart a {color: #cd2653;}
+
+.cartImage img {
+    width: 100%;
+        height: 100px;
+    object-fit: cover;
+}
+._cart_item_actions {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 15px;
+}
+._cart_item_actions a {
+    font-size: 14px;
+    font-weight: 500;
+}
+.checkout_mobile_button a.continue_shopping_cart {
+    background: none ;
+    color: #303f9f ;
+    font-weight: 600;
+}
+.checkout_mobile_button a {
+    background: #303f9f;
+    padding: 0;
+    border: 0;
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+
+@media screen and (max-width: 768px){
+.fa-search{display: -webkit-box;}
+
+header { padding: 10px 15px !important;}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 767px){
+    header{padding: 10px 0px;}
+    header .col-md-6 {width: 50%;}
+    .DesktopSearch {display: none;}
+    .MobileSearch {display: block;}
+    .header-search {width: 100%;margin: 10px 0 0;}
+    .header_left {display: block;}
+
+	/*.side-buttons { position: fixed;top: 101px;}*/
+	.cart_data{ width: -webkit-fill-available; right: -419px;}
+    .checkout_mobile_button {padding: 0 54px;font-size: 15px}
+    .singlecartitems.ng-star-inserted .row {flex-wrap: nowrap;}
+    .singlecartitems.ng-star-inserted .col-md-4 {width: 40%;}
+}
+
+
+
+

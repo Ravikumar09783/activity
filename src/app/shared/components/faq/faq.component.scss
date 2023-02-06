@@ -1,0 +1,27 @@
+
+.mat-expansion-panel {
+    box-shadow: none;
+}
+
+.mat-expansion-panel-header {
+    padding:0;
+}
+
+
+.mat-icon{
+    vertical-align: middle;
+    font-size: 10px;
+    padding-top: 5px;
+  }
+
+  .mat-expansion-panel-header-title{
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+@media (max-width:768px)
+{
+app-faq h1 {
+    font-size: 30px;
+}
+}  

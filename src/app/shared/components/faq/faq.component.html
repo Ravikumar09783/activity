@@ -1,0 +1,14 @@
+
+    <h1><b>FAQs</b></h1>
+    <mat-accordion>
+        <mat-expansion-panel hideToggle *ngFor="let item of faqItems">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon matPrefix>circle</mat-icon>
+                    {{item.title}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p *ngFor="let detail of item.itemDetails">{{detail}}</p>
+        </mat-expansion-panel>
+    </mat-accordion>
+

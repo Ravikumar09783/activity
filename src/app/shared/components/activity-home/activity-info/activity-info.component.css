@@ -1,0 +1,169 @@
+.test-heading {
+    padding: 15px;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 24px;
+    color: #404040;
+    text-align: center;
+}
+
+.mat-dialog-container {
+    min-width: 1100px;
+}
+
+.activityinfo {
+    padding: -20px;
+}
+
+.activityDetails {
+    display: grid;
+    grid-template-columns: 41% 58%;
+    grid-column-gap: 30px;
+    padding: 20px 15px;
+    background: #f9f9f9;
+    border-top: 1px solid #ccc;
+    max-height: 70vh!important;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.activityDetailsLeft img {
+    width: 100%;
+}
+
+.activityDetailsRight h5 {
+    font-weight: 600!important;
+    font-size: 17px;
+    color: #262f93;
+    margin-bottom: 10px;
+}
+
+.activityDetailsRight p {
+    font-size: 15px;
+    line-height: 24px!important;
+    color: rgba(0,0,0,.87);
+    margin-bottom: 0px;
+}
+
+.bringingNeeds ul {
+    padding-left: 0px!important;
+}
+
+.bringingNeeds ul li {
+    color: rgba(0,0,0,.87); 
+    font-size: 15px;
+    line-height: 24px!important;
+    list-style-position: inside;
+}
+
+.aboutSession button {
+    padding: 3px 9px;
+    margin: 8px 0 0;
+    display: inline-block!important;
+    font-size: 14px;
+    text-transform: capitalize;
+    color: #262f93 !important;
+    font-weight: 600;
+    background: none;
+    border-color: #262f93;
+    letter-spacing: .3px;
+    border-radius: 3px;
+    line-height: 28px;
+    border: 1px solid;
+    transition: .3s;
+}
+
+.aboutSession button:hover {
+    color: #e6af0b !important;
+    border-color: #e6af0b;
+}
+
+.bringingNeeds {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+.pickDrop {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+.cancellationPolicy {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    padding-top: 15px;
+} 
+
+.reviews {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    padding-top: 15px;
+} 
+
+.age {
+    width: 90%;
+    padding: 12px 0;
+    justify-content: flex-start;
+    text-align: left;
+    align-items: center;
+    margin: 0 auto;
+    border-bottom: 1px solid #ccc;
+}
+
+.age p {
+    margin-bottom: 0px;
+}
+
+.cardImage {
+    font-size: 15px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 5px 5px 10px;
+    border: 1px solid #e2e2e2;
+}
+
+.booking-btn {
+    margin-top: 15px;
+}
+
+.booking-btn button {
+    border-radius: 3px;
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: 500;
+    padding: 4px 12px !important;
+    background-color: #262f93;
+    color: #fff!important;
+    line-height: 28px;
+    letter-spacing: .3px;
+    border: none!important;
+    width: 100%;
+    transition: 0.3s;
+    outline: none;
+}
+
+.booking-btn button:hover {
+    background-color: #e6af0b;
+}
+
+.activityDetailsLeft h5 {
+    line-height: 16px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: #262f93;
+}
+
+.bookings {
+    border: none!important;
+}
+
+.cancelation-terms p {
+    padding-bottom: 10px;
+}
+
+span.check-icon {
+  color: rgba(0,0,0,.87)!important;
+  padding-right: 5px;
+}

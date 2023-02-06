@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="_social_login_buttons">    
+            <div class="_facebook_button">    
+                <button (click)="socialSignIn('facebook')" class="loginBtn loginBtn--facebook">    
+                    <mat-icon>home</mat-icon>Login with Facebook    
+                </button>    
+
+            </div>    
+            <div class="_google_button">    
+                <button (click)="socialSignIn('google')" class="loginBtn loginBtn--google">    
+                    <mat-icon>home</mat-icon>Login with Google    
+                </button>    
+            </div>    
+        </div> 
+    </div>
+    <div class="col-md-6 activityhub_login">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <h2 class="modal_title">Sign in Manually</h2>
+            <mat-error *ngIf="loginInvalid">
+                {{loginmessage}}
+            </mat-error>
+            <mat-form-field class="full-width-input">
+              <input matInput placeholder="Email" formControlName="username" required>
+              <mat-error>
+                Please provide a valid email address
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+              <input matInput type="password" placeholder="Password" formControlName="password" required>
+              <mat-error>
+                Please provide a valid password
+              </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary">Login</button>
+          </form>
+    </div>
+</div>

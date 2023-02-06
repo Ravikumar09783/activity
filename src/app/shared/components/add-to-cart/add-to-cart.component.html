@@ -1,0 +1,152 @@
+<div *ngIf="sessionDetail">
+    <form [formGroup]="AtcForm" method="post" id="km_add_to_cart_form" (ngSubmit)="addToCart()" class="mini_cart_form">
+        <div class="atc_header">
+            <h3 *ngIf="displayHeader" class="modal_heading">{{sessionDetail.name}}</h3>
+            <a mat-button mat-dialog-close class="atc_close_btn">x</a>
+        </div>    
+        <div [ngClass]="displayHeader ? 'sticky_header': 'no_header'" class="km_cart_modal" (scroll)="scrollHandler($event)"  id="km_cart_modal">
+            <div class="km_cartmodal_content">
+                <div *ngIf="!displayHeader" class="_session_info">
+                    <h3 class="modal_heading">{{sessionDetail.name}}</h3>
+                    <p *ngIf="sessionDetail.description" class="about_session">{{sessionDetail.description}}</p>
+                    <p *ngIf="!sessionDetail.description" class="about_session">{{sessionDetail.activityId.overview}}</p>
+                </div> 
+                <!-- participents for logged in users -->
+                <section *ngIf="profileParticipants.length > 0">
+                    <div class="km_atc_section kid_from_img">
+                        <div class="row kid_from_sp_0 user_profile_kids">
+                            <h3 class="km_atc_section_title">Choose your Participents</h3>
+                            <div *ngFor="let participant of profileParticipants" class="col-md-3 atc_single_participant">
+                                <mat-checkbox value="{{participant._id}}" (change)="selectParticipant($event)" class="user_kid_checkbox" FormArrayName="participants">
+                                    <div class="frm_img_h">
+                                        <span class="km_participent_img">
+                                            <img src="{{participant.profilePicURL.thumbnail}}"/>
+                                        </span>
+                                        <b class="km_participent_name">{{participant.firstName}}</b>
+                                    </div>
+                                </mat-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </section>    
+                <!-- participents for logged in user -->
+                <!-- participents tiles -->
+                <section *ngIf="profileParticipants.length == false" >
+                    <div class="km_atc_section">
+                        <h3 class="km_atc_section_title">How many Participants you want to register?</h3>
+                        <div class="km_participent_count kid_from_sp_0">
+                            <mat-radio-group aria-labelledby="example-radio-group-label" class="atc_seat_count">
+                              <mat-radio-button [checked]="(seatCount+1) == seats" (click)="addSeatInfo(seatCount, $event)"  class="_single_seat" *ngFor="let participantSeat of participantSeats ,let seatCount = index" [value]="seatCount">
+                                    {{seatCount + 1}}
+                              </mat-radio-button>
+                            </mat-radio-group>
+                            <!--<mat-form-field>
+                                <mat-label>More Participants?</mat-label>
+                                <mat-select class="atc_seat_count_select">
+                                    <mat-option value="6">6</mat-option>
+                                    <mat-option value="7">7</mat-option>
+                                    <mat-option value="8">8</mat-option>
+                                </mat-select>
+                            </mat-form-field>-->
+
+                        </div>
+                    <!-- participents tiles -->
+                    </div> 
+                    <div class="participant_forms">
+                        <div formArrayName="participants" *ngFor="let participant of participants.controls; let j = index;" >
+                            <div [formGroupName]="j" class="_kid_form_wrap">
+                                <h3 class="__participant_title">Participant {{j + 1}}</h3>
+                                <mat-icon [ngClass]="{'disabled' : isDeleteDisable}" (click)="deleteParticipantForm(j, $event)" class="delete_participant" matPrefix>delete_outline</mat-icon>
+                                <div class="col-md-4">
+                                    <mat-form-field class="full-width">
+                                        <input matInput placeholder="First Name" formControlName="firstName" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="full-width">
+                                        <input matInput placeholder="Last Name" formControlName="lastName" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="full-width">
+                                        <input matInput placeholder="Known As" formControlName="knownAs" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="full-width">
+                                        <mat-select placeholder="Gender" formControlName="gender">
+                                            <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                                                {{ gender.label }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field>
+                                        <input matInput formControlName="age" placeholder="Age">
+                                        <mat-error *ngIf="participant.controls['age'].hasError('max')">
+                                            Max age for this activity <strong>{{sessionDetail.activityId.ageRange.to}} years</strong>
+                                        </mat-error>
+                                        <mat-error *ngIf="participant.controls['age'].hasError('min')">
+                                            Min age for this activity <strong>{{sessionDetail.activityId.ageRange.from}} years</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                </section>     
+                <!-- extended care -->
+                <div *ngIf="sessionDetail.additionalCharges.length > 0" class="km_atc_section km_session_addtl_services form_kid_step_2">
+                    <h3 class="km_atc_section_title">Complete Your Camp</h3>
+                    <div *ngFor="let additionalcharge of sessionDetail.additionalCharges" class="km_single_service">
+                         <mat-checkbox [disabled]="additionalcharge.isMandatory" [checked]="additionalcharge.isMandatory" value="{{additionalcharge._id}}" (change)="onaddtlChange($event)" class="_additional_charges" FormArrayName="additionalcharges">
+                            <span class="km_radio_text">
+                                <p class="km_serv_text">{{additionalcharge.title}}</p>
+                                <p class="km_serv_price">${{additionalcharge.price}} per seat</p>
+                            </span>
+                         </mat-checkbox>
+                        <span class="_is_mandatory">
+                            <p *ngIf="additionalcharge.isMandatory">(required)</p>
+                        </span>
+                    </div>
+                </div>  
+                <!-- extended care -->
+                <!-- additional charges -->
+                <div *ngIf="hasExtendedCare" class="km_atc_section km_session_addtl_services form_kid_step_3">
+                    <h3 class="km_atc_section_title">Add More Facilities</h3>
+                    <mat-radio-group aria-labelledby="example-radio-group-label" [(ngModel)]="selectedExtCare" formControlName="extendedCareSelected" class="extended_care_group">
+                        <div *ngFor="let extndcare of sessionDetail.extendedCareDetails | keyvalue" class="_single_care" >
+                            <!-- if after Care -->
+                            <mat-radio-button (change)="onaextndChange($event)" *ngIf="extndcare.key == 'afterCare'" [value]="extndcare.key" class="_single_care_checkbox">
+                                <span>Late Pickup</span>
+                                <small>${{extndcare.value.pricePerSession}} per sesssion</small>
+                            </mat-radio-button>
+                            <!-- if after care -->
+                            
+                            <!-- if morning only -->
+                            <mat-radio-button *ngIf="extndcare.key == 'earlyCare'" [value]="extndcare.key">
+                                <span>Early Drop</span>
+                                <small>${{extndcare.value.pricePerSession}} per sesssion</small>
+                            </mat-radio-button>
+                            <!-- if morning only -->
+                            
+                            <!-- if combined -->
+                            <mat-radio-button *ngIf="extndcare.key == 'combined'" [value]="extndcare.key">
+                                <span>Early Drop + Late Pickup</span>
+                                <small>${{extndcare.value.pricePerSession}} per sesssion</small>
+                            </mat-radio-button>
+                            <!-- if combined -->
+                        </div>
+                    </mat-radio-group>
+                </div>
+                <!-- extended care -->
+            </div>    
+        </div>
+        <mat-divider></mat-divider>
+        <div class="button_wrap atc_button_wrap">
+            <button *ngIf="!cartItem" mat-raised-button color="primary">Add to Cart <span class="cartpricecustom">(${{cartPrice}})</span></button>
+            <button *ngIf="cartItem" mat-raised-button color="primary">Update(${{cartPrice}})</button>
+        </div>
+    </form>
+</div>

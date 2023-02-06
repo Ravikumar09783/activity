@@ -1,0 +1,25 @@
+.review-item{
+    .flex-row{
+        display:flex;
+        align-items: center;
+        .title{
+            margin-left:16px;
+        }
+        &.justify-space{
+            justify-content: space-between;
+        }
+    }
+   
+}
+
+@media (max-width:768px)
+{
+.review-item h6.title {
+    margin-left: 0 !important;
+}
+.avatar img {
+    margin-left: 10px;
+    transform: translatex(-10px);
+}
+
+}

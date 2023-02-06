@@ -1,0 +1,14 @@
+<div class="_provider_reviews">
+    <mat-divider></mat-divider>
+    <h3>Reviews</h3>
+    <div class="flex-row">
+        <app-ratings></app-ratings>
+        <b *ngIf = 'data.averageRating'>({{data.averageRating.rating}})</b>
+    </div>
+        <small *ngIf = 'data.averageRating'>{{data.averageRating.ratingCount}} ratings</small>
+        <p class = 'text-muted'> Here is what people are saying</p>
+        <mat-divider></mat-divider>
+
+        <app-review-item *ngFor = 'let item of data?.testimonials' [reviewItem] = "item"></app-review-item>
+
+</div>

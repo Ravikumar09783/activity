@@ -1,0 +1,136 @@
+.main-register-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 25px;
+    margin: -24px;
+    background: #f9f9f9;
+    padding: 40px 20px;
+}
+
+.newCustomer {
+    border: 1px solid #e2e2e2;
+    margin-bottom: 0;
+    padding: 20px!important;
+    border-radius: 0;
+    background: #fff;
+    position: relative;
+}
+
+.customer {
+    min-height: 220px;
+}
+
+.register {
+    min-height: 220px;
+}
+
+.customer p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    line-height: 24px;
+    margin-top: 25px;
+}
+
+.customer ul {
+    padding-left: 0px;
+    margin-bottom: 0px;
+}
+
+.customer ul li {
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    line-height: 24px;
+    list-style-type: none;
+}
+
+
+
+.customer h5 {
+    position: absolute;
+    top: -24px;
+    width: 86%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+    font-size: 15px!important;
+    border-radius: 5px;
+    color: #1959c9;
+    font-weight: 700;
+}
+
+.register h5 {
+    position: absolute;
+    top: -24px;
+    width: 86%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+    font-size: 15px!important;
+    border-radius: 5px;
+    color: green;
+    font-weight: 700;
+}
+
+.register p {
+    margin-top: 30px;
+}
+
+.register p {
+    margin-top: 30px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    line-height: 24px;
+}
+
+.register b {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    line-height: 24px;
+}
+
+.createButton button {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    height: 50px;
+    width: 100%;
+    border: none;
+    line-height: 50px;
+    border-radius: 5px;
+    color: #fff!important;
+    background: #236db5;
+    outline: none;
+}
+
+.signInButton button {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    height: 50px;
+    width: 100%;
+    border: none;
+    line-height: 50px;
+    border-radius: 5px;
+    color: #fff!important;
+    background: #090;
+    outline: none;
+}
+
+
+
+
+
+
+

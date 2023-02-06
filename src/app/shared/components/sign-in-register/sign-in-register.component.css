@@ -1,0 +1,142 @@
+.socialLogin img {
+    max-width: 100px !important;
+}
+
+.signInMain {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.socialLogin {
+    background: #F5F3F0 !important;
+    border-radius: 0 !important;
+    border: 1px solid #e2e2e2 !important;
+    padding: 50px !important;
+    text-align: center;
+}
+
+.yourP {
+    margin-bottom: 30px;
+}
+
+.yourP small {
+    font-size: 10px;
+    color: #000;
+}
+
+.socialButton button {
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff !important;
+    width: 100%;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color .3s ease-in-out;
+    margin-bottom: 20px !important;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    letter-spacing: .3px;
+    line-height: 28px;
+    word-break: normal !important;
+}
+
+.facebook {
+    background: #236db5;
+}
+
+.google {
+    background-color: #cf4332;
+}
+
+.signUpText p {
+    text-align: center;
+    color: #000;
+    padding-top: 20px;
+    font-size: 16px;
+}
+
+.signUpText a {
+    color: #236db5 !important;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.manualLogin {
+    border: 1px solid #e2e2e2;
+    background: #fff;
+    padding: 35px;
+}
+
+.manaulLogin h4 {
+    text-align: center;
+    color: #236db5;
+    font-size: 26px;
+    margin: 0 0 20px;
+    font-weight: bold;
+}
+
+
+.inputField input {
+    width: 100%;
+    border: none;
+    padding: 0 30px;
+    outline: none;
+    border-radius: 8px;
+    height: 100%;
+}
+
+.username,
+.password {
+    border: 1px solid #00000045;
+    background-color: #87ceeb0f;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    height: 41px;
+
+
+
+
+}
+
+.remember-forget {
+    justify-content: space-between;
+}
+
+.forgetPassword {
+    color: #236db5;
+    transition: .3s;
+
+}
+
+.forgetPassword:hover {
+    cursor: pointer;
+    color: #e6af0b;
+}
+.loginBtn{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.loginBtn button{
+    bottom: 20px;
+    background: rgba(38, 47, 147, 1);
+    color: #fff ;
+    max-width: 200px;
+    margin: 10px auto 0;
+    text-decoration: none;
+    font-size: 16px;
+    width: 90%;
+    border: none;
+    border-radius: 7px;
+    height: 40px;
+    transition: .3s;
+
+}
+.loginBtn button:hover{
+    background-color: #e6af0b;
+}
+/* .remember-forget div input{
+    margin-right: 10px!important;
+} */

@@ -1,0 +1,364 @@
+.mini_cart_form {
+    background: #f9f9f9;
+    margin: -24px;
+}
+.form_kid_step_1 fieldset>label {
+    display: none !important;
+}
+.delete_participant {
+    position: absolute;
+    right: 0px;
+    top: 2px;
+    font-size: 22px;
+    cursor: pointer;
+    color: orange;
+}
+.delete_participant:hover {
+    color: #ff0000;
+}
+.disabled {
+    opacity: 0.5;
+}
+._additional_charges, ._single_care_checkbox  {
+    border: 1px solid #e2e2e2;
+    display: flex;
+    padding: 5px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.mini_cart_form .kid_from_sp_0 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#km_cart_modal {
+    padding: 10px;
+    overflow: auto;
+    
+} 
+.sticky_header {
+    max-height: calc(100vh - 200px);
+}
+
+.no_header {
+    max-height: calc(100vh - 150px);
+}
+
+._gender_group {
+    display: flex;
+    align-items: center;
+}
+.atc_button_wrap {
+    padding: 20px 30px;
+    text-align: right;
+}
+.atc_close_btn {
+    position: absolute;
+    right: 15px;
+    margin: 0px;
+    padding: 8px;
+    min-width: auto;
+    line-height: 17px;
+    top: 15px;  /*20-july-2021 change*/
+    font-weight: bold;
+    font-size: 19px;
+}
+.atc_header .modal_heading {
+    padding: 10px 0px;
+    font-size: 24px;
+}
+.km_single_service {
+    position: relative;
+}
+span._is_mandatory {
+    position: absolute;
+    right: 10px;
+    z-index: 99999;
+    top: 15px;
+    font-size: 13px;
+    color: rgb(118, 118, 118);
+}
+p.about_session {
+    color: rgb(118, 118, 118);
+    font-size: 16px;
+	/*20-july-2021 changes start*/
+	overflow: hidden;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+	padding: 20px 0px;
+   /*20-july-2021 changes end*/
+}
+h3.modal_heading {
+    font-size: 32px;
+    margin: 0px !important;
+    color: rgb(25, 25, 25);
+    text-transform: capitalize;
+}
+.atc_header {
+    position: relative;
+    display: flex;
+    padding: 5px 20px;
+}
+.atc_seat_count {
+    display: flex;
+}
+.extended_care_group {
+    display: flex;
+    flex-direction: column;
+}
+.km_atc_section.kid_from_img>div:last-child {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.atc_single_participant {
+    padding: 4px;
+}
+._kid_form_wrap {
+    width: 100%;
+    padding-top: 20px;
+    border: 1px solid #236db5;
+    border-radius: 3px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px 0px;
+    position: relative;
+}
+._gender_radio_group mat-radio-button {
+    margin-right: 10px;
+}
+.__participant_title {
+    margin: 0px;
+    position: absolute;
+    top: -12px;
+    font-size: 17px;
+    left: 10px;
+    background: #236db5;
+    color: #fff;
+    padding: 2px 12px;
+    border-radius: 3px;
+}
+._single_seat {
+    border: 1px solid #c2c2c2;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+:host ::ng-deep ._single_seat .mat-radio-label {
+    padding: 15px 20px;
+}
+:host ::ng-deep .mat-radio-label {
+    margin: 0px !important;
+}
+:host ::ng-deep .mat-checkbox-layout .mat-checkbox-label {
+    width: 100%;
+}
+/* radio */
+::ng-deep ._single_seat.mat-radio-checked {
+    color: #fff;
+    background: green;
+}
+/* checkbox */
+::ng-deep .user_kid_checkbox.mat-checkbox-checked .mat-checkbox-label{
+    color: #fff;
+    background: green;
+    border-radius: 8px;
+}
+::ng-deep .mat-checkbox-layout {
+    width: 100%;
+}
+:host ::ng-deep ._single_seat .mat-radio-container, :host ::ng-deep .user_kid_checkbox .mat-checkbox-inner-container {
+    display: none;
+}
+:host ::ng-deep .mat-radio-button {
+    display: inline-block;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+    margin-bottom: 8px;
+}
+
+:host ::ng-deep .mat-radio-label-content {
+    display: flex;
+    flex-direction: column;
+}
+:host ::ng-deep ._single_seat .mat-radio-label-content {
+    padding-left: 0px;
+}
+.frm_img_h .km_participent_img{
+    line-height: 0;
+    background: #236db5;
+    border-radius: 50%;
+    overflow: hidden;
+    height: 50px;
+        min-width: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_kid_step_1 h3.km_particpent_title {
+    position: absolute;
+    top: -18px;
+    background: #236db5;
+    padding: 0 10px;
+    color: #fff;
+	font-size:18px;
+    border-radius: 5px;
+}
+.form_kid_step_1 label.km_radio_wrap input + span {
+    left: 0;
+}
+.form_kid_step_1 {
+    position: relative;
+    padding: 30px 10px 30px 10px;
+    border: 1px solid #236db5;
+    float: left;
+    border-radius: 6px;
+    margin: 50px 10px 40px 10px;
+}
+
+.km_atc_section.kid_from_img>div {
+    padding: 10px;
+}
+.mini_cart_form .kid_from_img{
+    display: flex;
+    justify-content: space-between;
+}
+.form_kid_step_3 p.km_serv_text {
+    margin: 0;
+    line-height: 1.5;
+}
+.frm_img_h img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.frm_img_h {
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: 1px solid #d6d6d6;
+    box-shadow: 1px 2px 3px rgba(0,0,0,.03);
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+.km_atc_section.kid_from_img>div:last-child .frm_img_h {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.kid_from_sp_0 label {
+    padding: 4px 0 0 20px;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #d6d6d6;
+    text-align: center;
+    display: block;
+    min-width: 150px;
+    margin: 0;
+}
+.kid_from_sp_0 label span,.form_kid_step_1 label.km_radio_wrap span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #6f6f6f;
+}
+.km_atc_section_title {
+    font-weight: bold !important;
+    color: #236db5;
+    font-size: 16px;
+    display: inline-block;
+    width: 100%;
+}
+.kid_from_sp_0 select {
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #d6d6d6;
+    height: 40px;
+    min-width: 60px;
+    padding: 0 10px;
+}
+.km_modal_heading {
+    background: #236db5;
+    text-align: left;
+    color: #fff;
+    margin: -1px -1px;
+    padding: 11px 30px;
+}
+.km_modal_alert a {
+    background: transparent;
+}
+.form_kid_step_1 input, .form_kid_step_1 select {
+    max-height: 40px !important;border: 1px solid #d6d6d6;
+}
+.form_kid_step_1  .km_custom_toggle_wrapper.km_input.km_gender_wrap {
+    height: 40px;
+}
+.form_kid_step_1 label {
+    margin: 0;
+}
+.kid_from_sp_0  label .km_gender input[type=radio], .km_radio {
+    left: 10px;
+}
+
+.form_kid_step_2 p.km_serv_text {
+    margin-bottom: 0;
+    line-height: 1.8;
+}
+.form_kid_step_3 label.km_checkbox_wrap {
+    margin-bottom: 20px;
+}
+.form_kid_step_2 label.km_checkbox_wrap {
+    margin-bottom: 20px;
+}
+.form_kid_step_2 p.km_serv_price {
+    margin-bottom: 0;
+    line-height: 1;
+    font-size: 13px;
+	
+}
+
+/**20-july-2021 **/
+
+span.cartpricecustom {
+    margin: 0 0 0 30px;
+}
+
+@media only screen and (max-width:768px)
+{
+	h3.modal_heading {
+    position: absolute;
+	 padding: 16px 0 !important;
+    top: 0;
+}
+div#km_cart_modal {
+    max-height: calc(100vh - 105px);
+    overflow-x: hidden !important;
+}
+h3.modal_heading.ng-star-inserted {
+    z-index: 1;
+    background: #f5f5f5;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    padding: 16px !important;
+    box-shadow: 1px 2px 3px rgba(0,0,0,.1);
+}
+.km_cartmodal_content {
+    padding-top: 40px;
+}
+.atc_seat_count {
+    flex-wrap: wrap; 
+}
+}
+
+@media only screen and (min-width:600px) and (max-width:1024px)
+{
+	.km_cartmodal_content {
+    padding-left:  40px !important;
+    padding-right:  40px !important;
+}
+}

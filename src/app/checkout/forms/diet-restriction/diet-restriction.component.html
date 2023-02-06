@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>DIET RESTRICTIONS</h2>
+<form [formGroup]="DietRestriction">
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-checkbox (change)="selectNone($event)" formControlName="none" matInput class="checkbox">None</mat-checkbox>
+            </div>
+            <div class="col-md-3">
+                <mat-checkbox [disabled]="isNoneSected" formControlName="vegetarian" matInput class="checkbox">Vegeterian</mat-checkbox>
+            </div>
+            <div class="col-md-3">
+                <mat-checkbox [disabled]="isNoneSected" formControlName="noPork" matInput class="checkbox">No Pork</mat-checkbox>
+            </div>
+            <div class="col-md-3">
+                <mat-checkbox [disabled]="isNoneSected" formControlName="vegan" matInput class="checkbox">Vegan</mat-checkbox>
+            </div>
+            <div class="col-md-3">
+                <mat-checkbox [disabled]="isNoneSected" formControlName="lactoseIntolerant" matInput class="checkbox">Lactose Intolerant</mat-checkbox>
+            </div>
+            <div class="col-md-3">
+                <mat-checkbox [disabled]="isNoneSected" formControlName="celiacDisease" matInput class="checkbox">Celiac Disease </mat-checkbox>
+            </div>
+            <div class="col-md-12">
+                <mat-checkbox (change)="selectAdditional($event)" [disabled]="isNoneSected"  matInput class="checkbox">Other</mat-checkbox>
+            </div>
+            <div *ngIf="showAdditional" class="col-md-12">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="additional Specifics"  formControlName="additionalSpecifics">
+                </mat-form-field>
+            </div>
+        </div>  
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button color="basic" mat-raised-button mat-dialog-close>Cancel</button>
+      <button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>Save</button>
+    </mat-dialog-actions>
+</form>

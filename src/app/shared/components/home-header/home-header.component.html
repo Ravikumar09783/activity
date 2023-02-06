@@ -1,0 +1,89 @@
+<div [ngClass]="{'sticky' : isSticky}" class="container-fluid2">
+    <header>
+        <div class="row">
+            <div class="col-md-6 header_left">
+                <a href="?providerId={{providerId}}&locationId={{locationId}}">
+                    <img class="avatar-40" src="../../../../assets/images/logo@3x.png">
+                </a>
+                <div *ngIf="search" class="search-wrapper DesktopSearch">
+                    <!-- <i class="fa fa-search search-icon"></i>
+                    <input type="text" placeholder="search" class="header-search"> -->
+                    <mat-form-field class="header-search">
+                        <mat-icon matPrefix>search</mat-icon>
+                        <input matInput type="text" placeholder="search">
+                      </mat-form-field>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="header_right">
+                    <!--<button *ngIf="!user" (click)="showLogin($event)" class="side-buttons sign-in-button m-r-10">Sign in</button>
+                    <div *ngIf="user" class="user_information">
+                        <span><b>{{user.name}}</b></span>
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                                <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button (click)="logout();" mat-menu-item>
+                                <span>Log Out</span>
+                            </button>
+                        </mat-menu>
+                    </div>-->
+                    <!-- <button (click)="openCart($event)" class="side-buttons cart-button"><i class="fa fa-shopping-cart m-r-5"></i>2</button> -->
+                    <button (click)="openCart($event)" [ngClass]="{'cart-button' : cartSize }" class="side-buttons  icon-text"><mat-icon >shopping_cart</mat-icon><span class="cart_number">{{cartSize}}</span></button>
+                </div>
+                <div [ngClass]="{'cart-open': isCartOpen }"   class="cart_data">
+				 <div #closecart (click)="closeCart(closecart, 'cart-open')" class="atc_close_btn cart_close">x</div>
+                    <div *ngIf="!cartSize" class="_no_items_cart">Nothing in your bucket</div>
+					<div class="mobile_checkout_cantainer">
+                    
+                    <div *ngFor="let item of cartItems | keyvalue" class="singlecartitems">
+                        
+                        <div class="row">
+                            <div class="col-md-4 cartImage">
+                               <img  *ngIf="!sessionImage" src="{item.value.session_detail.sessionImage}" else src="../../../../assets/images/icon.jpg">
+                            </div>
+                            <div class="col-md-8 cartItmes" >
+                                <span class="_head_cartitem_name">{{item.value.session_detail.name}}</span>
+                                <div class="row">
+                                    <span class="_cartitem_seat_count col-md-6">{{item.value.participants.length}} seats </span>
+                                    <span class="col-md-6 pull-right">${{item.value.price}}</span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 _cart_item_actions">
+                                        <a href="javascript:void(0)" class="_cart_edit" (click)="editCartItem(item.key)" matPrefix>Edit</a>
+                                        <a href="javascript:void(0)" (click)="removeCartItem(item.key)" class="_remove_cart_item">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+					</div>
+					<div class="checkout_mobile_button">
+                        <a href="/checkout?providerId={{providerId}}&locationId={{locationId}}" class="btn btn-primary checkout_link">Checkout</a>
+                        <a href="?providerId={{providerId}}&locationId={{locationId}}" class="continue_shopping_cart">Continue Shopping</a>
+					</div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div *ngIf="search" class="search-wrapper MobileSearch">
+                    <!-- <i class="fa fa-search search-icon"></i>
+                    <input type="text" placeholder="search" class="header-search"> -->
+                    <mat-form-field class="header-search">
+                        <mat-icon matPrefix>search</mat-icon>
+                        <input matInput type="text" placeholder="search">
+                      </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <mat-divider class="m-b-10"></mat-divider>
+</div>
+<!-- <hr> -->
+
+
+
+

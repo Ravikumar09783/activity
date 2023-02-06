@@ -1,0 +1,142 @@
+mat-card{
+    margin: 8px;
+    //background-image: url('https://s3.amazonaws.com/kidcircle-app/admin/original_1593180204452-shutterstock_488812741.jpg');
+    //background-image: url('https://s3.amazonaws.com/kidcircle-app/admin/original_1593180204452-shutterstock_488812741.jpg'), linear-gradient(#eb01a5, #d13531); /* W3C */
+    position: relative;
+    // min-width: 500px;
+    @media(max-width:768px){
+        min-height: 180px;
+    }
+    .flex-row{
+        display:flex;
+        justify-content: flex-end;
+        z-index:1;
+        position: relative;
+    }
+    .inner-content{
+        display: flex;
+        margin-top: 7px;
+        justify-content:space-between;
+    }
+   
+    .left-panel{
+        padding: 8px;
+        background-color: #fcfcfc;
+        width:50%;
+        z-index:1;
+        border-radius:5px;
+        @media(max-width:768px){
+            width:100%;
+        }
+        .session-date{
+            margin-bottom:0;
+        }
+        .title{
+            text-transform: capitalize;
+        }
+        
+    }
+    .icon-wrapper{
+        color: white;
+        z-index: 2;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        height: 60px;
+        mat-icon{
+           margin-right:5px; 
+        }
+    }
+    .right-panel{
+        display: flex;
+        flex-direction:row;
+        justify-content: flex-end;
+        width:50%;
+        z-index:1;
+        bottom:8px;
+        right:8px;
+        @media(max-width:768px){
+            width:100%;
+        }
+        position:absolute;
+        :nth-child(1){
+            margin-right:10px;
+        }
+    }
+
+    .layer {
+        background-color: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .transparent-btn{
+        background-color:transparent;
+        height:36px;
+        color: #fff;
+        border:1px solid #fff;
+        padding: 0 8px;
+    }
+}
+
+@media (max-width:1024px)
+{
+
+.right-panel {
+    max-width: 100px;
+}
+.right-panel
+{
+button {
+    font-size: 12px !important;
+    padding: 0 !important;
+}
+}
+.left-panel {
+    max-width: calc(100% - 140px);
+    transform: translatey(44px);
+}
+.mat-tooltip-trigger.icon-wrapper {
+    font-size: 18px !important;
+}
+
+
+}
+
+
+
+@media only screen and (min-width:760px) and  (max-width:1024px)
+{
+app-activity-card {  
+    max-width: 50% !important;
+    width: 100%; 
+	margin:0;
+} 
+.left-panel {
+    max-width: calc(100% - 140px);
+    transform: translatey(6px) !important;
+}
+}
+
+@media (max-width:350px)
+{
+.right-panel {
+    transform: scale(.9) translatex(7px);
+}
+.left-panel {
+    max-width: calc(100% - 123px) !important;
+    transform: translatey(55px) !important;
+    width: 100% !important;
+}
+.left-panel p {
+    font-size: 10px;
+}
+.left-panel h6 {
+    font-size: 14px;
+}
+.mat-tooltip-trigger.icon-wrapper[_ngcontent-muk-c315] {
+    font-size: 16px !important;
+}
+}

@@ -1,0 +1,44 @@
+<app-home-header search="true"></app-home-header>
+<div class = 'container-fluid'>
+    <div class="wrapper">
+      <app-activity-details *ngIf = 'providerLocDetails && providerLocDetails._id' [data] = 'providerLocDetails'></app-activity-details>
+      <mat-divider></mat-divider>
+      <div class="flex-row space-between FlexBlock">
+        <app-date-picker class = 'mat-datepicker' (onDatechange) = 'changeBookingDate($event)' [placeholder] = '"Choose Starting Date"'></app-date-picker>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [value] = 'bookingTypeId' (change) = 'changeBookingType($event)'>
+          <mat-button-toggle *ngFor = 'let item of bookingTypes' [value] = "item.id"> {{item.label}}</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+      <app-activity-home></app-activity-home>
+        <!-- <mat-tab-group [ngClass]="{'sticky-tabs' : isStickyTabs, 'ajax-processing' : isProcessing}">
+            <mat-tab *ngFor="let tab of tabOptions;">
+              <ng-template mat-tab-label>
+                {{tab}}
+
+              </ng-template>
+              <div *ngFor = 'let tabItem of data[tab],let i = index'>
+                <div class ='flex-row'>
+                  <img class = 'heart-ico' [src] = 'heartIcon' />
+                <h5 class = 'title'>{{tabItem['key']}}</h5>
+              </div>
+               <div class="list">
+                <app-activity-card *ngFor = "let item of tabItem['value']" [item] = 'item'></app-activity-card>
+               </div>
+              </div>
+
+            </mat-tab>
+          </mat-tab-group>
+        <app-no-data *ngIf = '!tabOptions.length' message = "No session found for this type"></app-no-data> -->
+
+
+        <!-- <app-provider-reviews [providerId] = 'providerId'></app-provider-reviews> -->
+
+        <!-- <app-faq></app-faq> -->
+    </div>
+</div>
+
+<app-footer></app-footer>
+
+
+

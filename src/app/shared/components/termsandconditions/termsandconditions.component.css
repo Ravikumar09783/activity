@@ -1,0 +1,9 @@
+.single_term i {
+    color: #147b8d;
+    margin-right: 10px;
+}
+.single_term {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}

@@ -1,0 +1,33 @@
+mat-card {
+  max-width: 400px;
+  margin: 2em auto;
+  text-align: center;
+}
+
+mat-form-field {
+  display: block;
+}
+
+._facebook_button, ._google_button {
+    margin: 10px 0px;
+}
+h2.modal_title {
+    font-size: 20px;
+    text-align: center;
+}
+._google_button button {
+    background: #cf4332;
+}
+._facebook_button button {
+    background: #236db5;
+}
+
+._facebook_button button, ._google_button button {
+    width: 100%;
+    color: #fff;
+    border: 0px;
+    border-radius: 3px;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+}

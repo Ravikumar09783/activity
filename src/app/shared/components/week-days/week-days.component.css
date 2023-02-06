@@ -1,0 +1,26 @@
+.btn_group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    grid-gap: 5px;
+}
+.btn_group>button {
+    height: 25px;
+    padding: 0 !important;
+    min-width: 25px !important;
+    border-radius: 50%;
+    display: block;
+    background: #e6af0b;
+    box-shadow: none !important;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 12px;
+    margin: 0;
+}
+.btn_group>button:first-child, .btn_group>button:last-child {
+    background: #e3e3e3 !important;
+    color: #262f93 !important;
+}

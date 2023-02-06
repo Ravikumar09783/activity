@@ -1,0 +1,17 @@
+span{
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid white;
+    color: white;
+    font-size: 12px;
+    line-height: 20px;
+    display: inline-block;
+    text-align: center;
+&.selected{
+    color: #303f9f;
+    background-color: #fff;
+    border-color: #303f9f;
+}
+}

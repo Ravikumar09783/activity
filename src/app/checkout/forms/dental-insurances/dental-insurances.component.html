@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>DENTAL INSURANCE</h2>
+<form [formGroup]="DentalInsurances">
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+            <div class="col-md-3">
+                <mat-checkbox (change)="addInsurance($event)" style="display: none;" formControlName="isAvailable" matInput class="checkbox">Is Available?</mat-checkbox>
+            </div>
+            <div class="col-md-12" >
+                <div class="row">
+                    <div class="col-md-4">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Subscriber Name" required formControlName="subscribersName">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Group Number" required formControlName="groupNo">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Policy Number" required formControlName="policyNo">
+                        </mat-form-field>
+                    </div>
+                </div>    
+            </div>    
+        </div>  
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button color="basic" mat-raised-button mat-dialog-close>Cancel</button>
+      <button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>Save</button>
+    </mat-dialog-actions>
+</form>

@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>ENVIRONMENT ALLERGIES</h2>
+<form [formGroup]="EnvironmentAllergy">
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-checkbox (change)="selectNone($event)" matInput  formControlName="none"  class="checkbox">None</mat-checkbox>
+            </div>
+            <div class="col-md-3">
+                <mat-checkbox [disabled]="isNoneSected" matInput formControlName="latex" class="checkbox">Latex</mat-checkbox>
+            </div>
+            <div class="col-md-3">
+                <mat-checkbox [disabled]="isNoneSected" matInput  formControlName="alcoholRub" class="checkbox">Alcohol Rub</mat-checkbox>
+            </div>
+            <div class="col-md-3">
+                <mat-checkbox [disabled]="isNoneSected" matInput formControlName="grass" class="checkbox">Grass</mat-checkbox>
+            </div>
+            <div class="col-md-3">
+                <mat-checkbox [disabled]="isNoneSected" matInput  formControlName="seasonal" class="checkbox">Seasonal</mat-checkbox>
+            </div>
+            <div class="col-md-3">
+                <mat-checkbox [disabled]="isNoneSected" matInput  formControlName="cats" class="checkbox">Cats</mat-checkbox>
+            </div>
+            <div class="col-md-3">
+                <mat-checkbox [disabled]="isNoneSected" matInput  formControlName="dogs" class="checkbox">Dogs</mat-checkbox>
+            </div>
+            <div class="col-md-3"> 
+                <mat-checkbox [disabled]="isNoneSected" matInput formControlName="insectStings" class="checkbox">Insect Stings</mat-checkbox>
+            </div>
+            <div class="col-md-3"> 
+                <mat-checkbox [disabled]="isNoneSected" matInput formControlName="plants" class="checkbox">Plants</mat-checkbox>
+            </div>
+            <div class="col-md-3"> 
+                <mat-checkbox [disabled]="isNoneSected" (change)="addOtherInfo($event)" matInput class="checkbox">Other</mat-checkbox>
+            </div>
+            <div *ngIf="showadditional" class="col-md-12">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Additional Specifics"   formControlName="additionalSpecifics">
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button color="basic" mat-raised-button mat-dialog-close>Cancel</button>
+        <button mat-raised-button color="primary" (click)="save()">Save</button>
+    </mat-dialog-actions>
+</form>    

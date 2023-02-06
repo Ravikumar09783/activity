@@ -1,0 +1,3 @@
+<span *ngFor = 'let day of days' [ngClass] = 'selectedDays.indexOf(day.id) > -1 ? "selected" : ""'>
+    {{day.abbr}}
+</span>

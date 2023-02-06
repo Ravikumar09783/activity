@@ -1,0 +1,15 @@
+<div class="cardA-02">
+  <div class="btn_group">
+    <button
+      mat-raised-button
+      *ngFor="let data of weekDaysData"
+      matTooltipPosition="above"
+      matTooltip="{{ data[1] }}"
+      matTooltipClass="example-tooltip-uppercase"
+      aria-label="Button that shows a red tooltip"
+      class="example-button"
+    >
+      {{ data[0] }}
+    </button>
+  </div>
+</div>

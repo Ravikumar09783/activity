@@ -1,0 +1,74 @@
+.list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: space-between;
+}
+:host ::ng-deep .sticky-tabs mat-tab-header {
+    position: fixed;
+    top: 81px;
+    z-index: 9;
+    background: #fff;
+    width: 80%;
+}
+.wrapper{
+    width:100%;
+    margin:auto;
+    @media(min-width:768px){
+        width:80%;
+    }
+}
+.flex-row{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    margin: 1rem auto;
+    &.space-between{
+        justify-content: space-between;
+    }
+    .title{
+        margin-bottom:0;
+        margin-left: 0.5rem;
+    }
+    .heart-ico{
+        width:1rem;
+        height:1rem;
+    }
+}
+
+:host ::ng-deep app-activity-card{
+    width:49%;
+}
+
+@media(max-width:768px){
+    :host ::ng-deep app-activity-card {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 100px) and (max-width: 767px){
+    .mat-button-toggle-group.mat-button-toggle-group-appearance-standard {width: 100%;font-size: 13px;}
+    .FlexBlock {display: block;}
+}
+@media only screen and (min-width:768px) and  (max-width:980px)
+{
+.wrapper{max-width:100%; width:100%;}
+}
+
+@media only screen and (min-width:768px) and  (max-width:1024px)
+{
+app-activity-card {  
+    max-width: 50% !important;
+    width: 100%;
+	margin:0;
+}
+}
+
+
+@media only screen and (max-width:759px){
+app-activity-card {  
+    max-width: 450px !important;   
+    width: 100%; 
+	margin:0;
+} 
+}

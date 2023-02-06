@@ -1,0 +1,21 @@
+<div class = '_activity_detail' *ngIf = 'data.providerId'>
+    <app-avatar [size] = '50' [avatar] = 'data.providerId.logoURL'></app-avatar>
+    <mat-divider class = 'divider' [vertical]="true"></mat-divider>
+    <div class="details">
+        <h4 *ngIf = 'data.providerId.name'>{{data.providerId.name}}</h4>
+        <div class="flex-row">
+            <app-view-address [address] = 'data'></app-view-address>
+            <span>&nbsp;&nbsp;|&nbsp;&nbsp;{{data.providerId.phone}}</span>
+        </div>
+       
+        <div class="rating">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">star_rate</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">star_rate</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">star_rate</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">star_rate</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">star_rate</mat-icon>
+        </div>
+    </div>
+   
+
+</div>
