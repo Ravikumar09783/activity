@@ -1,0 +1,67 @@
+<div class="signInMain">
+    <div class="socialLogin">
+      <img src="../../../../assets/images/icon-big.png" alt="" />
+      <p class="yourP">
+        <small
+          >Your account is managed and powered by <span>Field Day</span></small
+        >
+      </p>
+  
+      <div class="socialButton">
+        <button class="facebook">Login With Facebook</button>
+        <button class="google">Login With Google</button>
+      </div>
+      <div class="signUpText">
+        <p>Already Have Account <a mat-dialog-close (click)="signIn()">Sign In Now!</a></p>
+      </div>
+    </div>
+  
+    <div class="manualLogin">
+      <div class="manaulLogin">
+        <h4>Sign in Manually</h4>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  
+      <div class="loginForm">
+        <div class="inputField">
+            <div class="username d-flex">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                <input type="text" class="emailId" formControlName="name" placeholder="Full Name" />
+              </div>
+          <div class="username d-flex">
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            <input type="text" class="emailId" formControlName="email" placeholder="Email Id"/>
+          </div>
+          <div class="password">
+            <input type="password" class="emailId" formControlName="password" autocomplete="password" placeholder="Password"/>
+          </div>
+        </div>
+        <div class="username d-flex">
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            <input type="number" class="emailId" formControlName="countryCode " placeholder="Country Code"/>
+          </div>
+        <div class="username d-flex">
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            <input type="number" class="emailId" formControlName="phone" placeholder="Phone Number"/>
+          </div>
+        <div class="captcha"></div>
+        <div class="remember-forget d-flex">
+          <div>
+            <input type="checkbox" value="Bike" id="remember" class="mr-2" />
+            <label for="remember">Remember Me</label>
+          </div>
+          <div class="forgetPassword">
+            <p>Forget Password</p>
+          </div>
+        </div>
+      </div>
+      <div class="loginBtn">
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  
+    </div>
+  </div>
+  
+  
+  
